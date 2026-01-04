@@ -36,17 +36,17 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 **Purpose**: Initialize Python project structure, dependencies, and testing framework
 
-**Checkpoint**: Project is runnable with empty modules
+**Checkpoint**: Project is runnable with empty modules ✅ COMPLETE
 
-- [ ] T001 Create project directory structure in `calc-using-skp/src/calculator/`, `calc-using-skp/src/cli/`, `calc-using-skp/tests/`
-- [ ] T002 Create `calc-using-skp/requirements.txt` with `rich>=13.0.0`, `pytest>=7.0.0`, `pytest-cov>=4.0.0`
-- [ ] T003 [P] Create `calc-using-skp/setup.py` with entry point `python -m calculator`
-- [ ] T004 [P] Create `calc-using-skp/README.md` with project description and quickstart
-- [ ] T005 Create `calc-using-skp/src/calculator/__init__.py` (empty package marker)
-- [ ] T006 [P] Create `calc-using-skp/src/cli/__init__.py` (empty package marker)
-- [ ] T007 [P] Create `calc-using-skp/tests/__init__.py` (empty package marker)
-- [ ] T008 Create `calc-using-skp/tests/conftest.py` with pytest configuration and shared fixtures
-- [ ] T009 [P] Create `.gitignore` for Python project (pycache, venv, .pytest_cache, etc.)
+- [x] T001 Create project directory structure in `calc-using-skp/src/calculator/`, `calc-using-skp/src/cli/`, `calc-using-skp/tests/`
+- [x] T002 Create `calc-using-skp/requirements.txt` with `rich>=13.0.0`, `pytest>=7.0.0`, `pytest-cov>=4.0.0`
+- [x] T003 [P] Create `calc-using-skp/setup.py` with entry point `python -m calculator`
+- [x] T004 [P] Create `calc-using-skp/README.md` with project description and quickstart
+- [x] T005 Create `calc-using-skp/src/calculator/__init__.py` (empty package marker)
+- [x] T006 [P] Create `calc-using-skp/src/cli/__init__.py` (empty package marker)
+- [x] T007 [P] Create `calc-using-skp/tests/__init__.py` (empty package marker)
+- [x] T008 Create `calc-using-skp/tests/conftest.py` with pytest configuration and shared fixtures
+- [x] T009 [P] Create `.gitignore` for Python project (pycache, venv, .pytest_cache, etc.)
 
 ---
 
@@ -56,11 +56,11 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 **⚠️ CRITICAL**: Phase 2 MUST complete before user story implementation begins
 
-**Checkpoint**: Core engine is functional and testable
+**Checkpoint**: Core engine is functional and testable ✅ COMPLETE
 
 ### 2.1: Error Definitions and Exceptions
 
-- [ ] T010 Create `calc-using-skp/src/calculator/errors.py` with exception hierarchy:
+- [x] T010 Create `calc-using-skp/src/calculator/errors.py` with exception hierarchy:
   - `CalculatorError` (base class)
   - `DivisionByZeroError` (extends CalculatorError)
   - `InvalidOperatorError` (extends CalculatorError)
@@ -69,14 +69,14 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### 2.2: Calculator State Management
 
-- [ ] T011 Create `calc-using-skp/src/calculator/state.py` with immutable `CalculatorState` dataclass:
+- [x] T011 Create `calc-using-skp/src/calculator/state.py` with immutable `CalculatorState` dataclass:
   - Fields: `display: Decimal`, `accumulator: Decimal`, `operator: Optional[str]`, `error: Optional[str]`, `is_new_input: bool`
   - Default values: display=Decimal('0'), accumulator=Decimal('0'), operator=None, error=None, is_new_input=True
   - Make dataclass frozen (immutable)
 
 ### 2.3: Input Validator
 
-- [ ] T012 Create `calc-using-skp/src/calculator/validator.py` with `InputValidator` class:
+- [x] T012 Create `calc-using-skp/src/calculator/validator.py` with `InputValidator` class:
   - Method: `validate_digit(char: str) -> bool` (checks if 0-9)
   - Method: `validate_operator(op: str) -> bool` (checks if +, -, ×, ÷)
   - Method: `validate_decimal_point(display: str) -> bool` (rejects if decimal already present)
@@ -85,7 +85,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### 2.4: Expression Parser with PEMDAS
 
-- [ ] T013 Create `calc-using-skp/src/calculator/parser.py` with recursive descent parser:
+- [x] T013 Create `calc-using-skp/src/calculator/parser.py` with recursive descent parser:
   - Class: `ExpressionParser` with method `parse(expression: str) -> Decimal`
   - Implement 3-level operator precedence:
     - Level 1: Addition (+) and Subtraction (-) - lowest precedence
@@ -97,7 +97,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
   - Raise `InvalidExpressionError` for incomplete expressions (e.g., "5 +")
   - Use `Decimal` for all arithmetic
 
-- [ ] T014 [P] Create `calc-using-skp/tests/unit/test_parser.py` with tests (TDD - write FIRST):
+- [x] T014 [P] Create `calc-using-skp/tests/unit/test_parser.py` with tests (TDD - write FIRST):
   - `test_parse_simple_addition()`: "5 + 3" → 8
   - `test_parse_simple_subtraction()`: "10 - 4" → 6
   - `test_parse_simple_multiplication()`: "6 * 7" → 42
@@ -111,7 +111,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### 2.5: Calculation Engine
 
-- [ ] T015 Create `calc-using-skp/src/calculator/engine.py` with `Calculator` class:
+- [x] T015 Create `calc-using-skp/src/calculator/engine.py` with `Calculator` class:
   - Method: `perform_operation(left: Decimal, op: str, right: Decimal) -> Decimal`
     - op ∈ ['+', '-', '×', '÷']
     - Division by zero raises `DivisionByZeroError`
@@ -125,7 +125,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
     - Remove trailing zeros
     - Examples: Decimal('5.50000') → "5.5", Decimal('5') → "5"
 
-- [ ] T016 [P] Create `calc-using-skp/tests/unit/test_engine.py` with tests (TDD - write FIRST):
+- [x] T016 [P] Create `calc-using-skp/tests/unit/test_engine.py` with tests (TDD - write FIRST):
   - `test_addition()`: 10 + 5 → 15
   - `test_subtraction()`: 20 - 8 → 12
   - `test_multiplication()`: 6 * 7 → 42
@@ -138,7 +138,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### 2.6: State Management Logic
 
-- [ ] T017 Create `calc-using-skp/src/calculator/state.py` operations (extend T011):
+- [x] T017 Create `calc-using-skp/src/calculator/state.py` operations (extend T011):
   - Method: `handle_digit(digit: str, state: CalculatorState) -> CalculatorState`
     - If is_new_input: set display to digit
     - Else: append digit to display
@@ -160,7 +160,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
     - Negate display value
   - All methods use try-except to catch errors and set state.error
 
-- [ ] T018 [P] Create `calc-using-skp/tests/unit/test_state.py` with tests (TDD - write FIRST):
+- [x] T018 [P] Create `calc-using-skp/tests/unit/test_state.py` with tests (TDD - write FIRST):
   - `test_handle_digit_new_input()`: digit on fresh state → display="5"
   - `test_handle_digit_append()`: second digit → display="53"
   - `test_handle_operator_sets_operator()`: "5+" → accumulator=5, operator='+'
@@ -183,7 +183,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Tests for User Story 1 (Write FIRST)
 
-- [ ] T019 [P] [US1] Create `calc-using-skp/tests/integration/test_basic_arithmetic.py`:
+- [x] T019 [P] [US1] Create `calc-using-skp/tests/integration/test_basic_arithmetic.py`:
   - `test_addition_simple()`: "10 + 5" → "15"
   - `test_subtraction_simple()`: "20 - 8" → "12"
   - `test_multiplication_simple()`: "6 * 7" → "42"
@@ -192,22 +192,22 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Implementation for User Story 1
 
-- [ ] T020 [P] [US1] Create `calc-using-skp/src/lib.py` public library API:
+- [x] T020 [P] [US1] Create `calc-using-skp/src/lib.py` public library API:
   - Function: `calculate(expression: str) -> str`
     - Uses Calculator engine
     - Returns formatted result as string
     - Raises CalculatorError on invalid input
 
-- [ ] T021 [US1] Create `calc-using-skp/src/cli/main.py` one-shot mode entry point:
+- [x] T021 [US1] Create `calc-using-skp/src/cli/main.py` one-shot mode entry point:
   - If command-line argument provided: one-shot mode
     - Example: `python -m calculator "5 + 3"` → prints "8"
   - If no argument: start interactive mode (implemented in Phase 7)
   - Error handling: catch exceptions, print to stderr, exit with code 1
 
-- [ ] T022 [P] [US1] Add `python -m calculator` entry point in `calc-using-skp/__main__.py`:
+- [x] T022 [P] [US1] Add `python -m calculator` entry point in `calc-using-skp/__main__.py`:
   - Delegates to `cli.main`
 
-**Checkpoint**: Basic arithmetic works in one-shot mode. User can run `python -m calculator "5 + 3"` and get "8"
+**Checkpoint**: Basic arithmetic works in one-shot mode. User can run `python -m calculator "5 + 3"` and get "8" ✅ COMPLETE
 
 ---
 
@@ -221,7 +221,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Tests for User Story 2 (Write FIRST)
 
-- [ ] T023 [P] [US2] Create `calc-using-skp/tests/integration/test_decimal_precision.py`:
+- [x] T023 [P] [US2] Create `calc-using-skp/tests/integration/test_decimal_precision.py`:
   - `test_decimal_addition()`: "3.14 + 2.1" → "5.24"
   - `test_decimal_multiplication()`: "3.14 * 2" → "6.28"
   - `test_decimal_division()`: "10.5 / 2" → "5.25"
@@ -231,12 +231,12 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Implementation for User Story 2
 
-- [ ] T024 [P] [US2] Extend `calc-using-skp/src/calculator/validator.py`:
+- [x] T024 [P] [US2] Extend `calc-using-skp/src/calculator/validator.py`:
   - Method: `validate_decimal_point()` already created in Phase 2
 
-- [ ] T025 [US2] Update `calc-using-skp/src/cli/main.py` if needed (should already work with Phase 1 implementation)
+- [x] T025 [US2] Update `calc-using-skp/src/cli/main.py` if needed (should already work with Phase 1 implementation)
 
-**Checkpoint**: `python -m calculator "0.1 + 0.2"` returns "0.3"
+**Checkpoint**: `python -m calculator "0.1 + 0.2"` returns "0.3" ✅ COMPLETE
 
 ---
 
@@ -250,7 +250,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Tests for User Story 3 (Write FIRST)
 
-- [ ] T026 [P] [US3] Create `calc-using-skp/tests/integration/test_negative_numbers.py`:
+- [x] T026 [P] [US3] Create `calc-using-skp/tests/integration/test_negative_numbers.py`:
   - `test_negative_input()`: "-10 + 5" → "-5"
   - `test_subtraction_to_negative()`: "5 - 10" → "-5"
   - `test_negative_multiplication()`: "-4 * -3" → "12"
@@ -259,13 +259,13 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Implementation for User Story 3
 
-- [ ] T027 [P] [US3] Update `calc-using-skp/src/calculator/parser.py`:
+- [x] T027 [P] [US3] Update `calc-using-skp/src/calculator/parser.py`:
   - Already handles negative numbers via unary minus in expression parser
 
-- [ ] T028 [P] [US3] Update `calc-using-skp/src/calculator/state.py`:
+- [x] T028 [P] [US3] Update `calc-using-skp/src/calculator/state.py`:
   - Method: `handle_sign_toggle()` already created in Phase 2
 
-**Checkpoint**: Negative number support working end-to-end
+**Checkpoint**: Negative number support working end-to-end ✅ COMPLETE
 
 ---
 
@@ -279,7 +279,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Tests for User Story 4 (Write FIRST)
 
-- [ ] T029 [P] [US4] Create `calc-using-skp/tests/integration/test_error_handling.py`:
+- [x] T029 [P] [US4] Create `calc-using-skp/tests/integration/test_error_handling.py`:
   - `test_division_by_zero()`: "5 / 0" → error "Cannot divide by zero"
   - `test_invalid_operator()`: "5 @ 3" → error "Invalid operator: @"
   - `test_incomplete_expression()`: "5 +" → error "Incomplete expression"
@@ -288,22 +288,22 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Implementation for User Story 4
 
-- [ ] T030 [P] [US4] Update `calc-using-skp/src/calculator/state.py`:
+- [x] T030 [P] [US4] Update `calc-using-skp/src/calculator/state.py`:
   - Wrap all operations in try-except
   - Set state.error on exception
   - Return error state so user can clear and continue
 
-- [ ] T031 [US4] Update `calc-using-skp/src/cli/main.py` one-shot mode:
+- [x] T031 [US4] Update `calc-using-skp/src/cli/main.py` one-shot mode:
   - On error: print "Error: <message>" to stderr
   - Exit with code 1
 
-- [ ] T032 [US4] Create user-friendly error messages:
+- [x] T032 [US4] Create user-friendly error messages:
   - DivisionByZeroError → "Cannot divide by zero"
   - InvalidOperatorError → "Invalid operator: [symbol]"
   - InvalidExpressionError → "Incomplete expression"
   - InvalidNumberError → "Invalid number format"
 
-**Checkpoint**: Error handling works; calculator recovers gracefully
+**Checkpoint**: Error handling works; calculator recovers gracefully ✅ COMPLETE
 
 ---
 
@@ -317,7 +317,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Tests for User Story 5 (Write FIRST)
 
-- [ ] T033 [P] [US5] Create `calc-using-skp/tests/integration/test_ui_interface.py`:
+- [x] T033 [P] [US5] Create `calc-using-skp/tests/integration/test_ui_interface.py`:
   - `test_display_shows_initial_zero()`: UI displays "0" at startup
   - `test_display_updates_on_digit()`: Pressing "5" updates display to "5"
   - `test_button_grid_layout()`: Verify 5 rows × 4 columns layout
@@ -328,7 +328,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 ### Implementation for User Story 5
 
-- [ ] T034 [P] [US5] Create `calc-using-skp/src/cli/ui.py` iOS-style UI renderer:
+- [x] T034 [P] [US5] Create `calc-using-skp/src/cli/ui.py` iOS-style UI renderer:
   - Class: `CalculatorUI` with method `render(state: CalculatorState) -> str`
   - Using `rich` library: Table for button grid, Panel for display
   - Display section at top showing current value
@@ -348,7 +348,7 @@ This task list implements the iOS-style CLI calculator in 5 phases:
     - Control (C, ±, ←): dark gray background
   - Error state: display error message in red
 
-- [ ] T035 [P] [US5] Create `calc-using-skp/src/cli/interface.py` interactive mode:
+- [x] T035 [P] [US5] Create `calc-using-skp/src/cli/interface.py` interactive mode:
   - Class: `InteractiveCalculator` with method `run()` → None
   - Initialize state to default
   - Loop:
@@ -368,16 +368,16 @@ This task list implements the iOS-style CLI calculator in 5 phases:
     - ±: sign toggle
     - Q: quit
 
-- [ ] T036 [US5] Update `calc-using-skp/src/cli/main.py`:
+- [x] T036 [US5] Update `calc-using-skp/src/cli/main.py`:
   - If command-line arg: one-shot mode (already done)
   - Else: launch interactive mode using `InteractiveCalculator().run()`
 
-- [ ] T037 [P] [US5] Add visual feedback for button presses:
+- [x] T037 [P] [US5] Add visual feedback for button presses:
   - When button pressed: highlight/change color briefly
   - Provide audio feedback (optional: system beep)
   - Animation on result display
 
-**Checkpoint**: Beautiful interactive calculator works with iOS-style UI
+**Checkpoint**: Beautiful interactive calculator works with iOS-style UI ✅ COMPLETE
 
 ---
 
@@ -385,39 +385,39 @@ This task list implements the iOS-style CLI calculator in 5 phases:
 
 **Purpose**: Final quality improvements, documentation, and deployment readiness
 
-**Checkpoint**: Production-ready calculator
+**Checkpoint**: Production-ready calculator ✅ COMPLETE
 
-- [ ] T038 Create comprehensive `calc-using-skp/README.md`:
+- [x] T038 Create comprehensive `calc-using-skp/README.md`:
   - Installation instructions
   - Usage examples (one-shot and interactive modes)
   - Keyboard shortcuts reference
   - Troubleshooting section
   - Development setup
 
-- [ ] T039 [P] Add docstrings to all public functions in:
+- [x] T039 [P] Add docstrings to all public functions in:
   - `calc-using-skp/src/lib.py`
   - `calc-using-skp/src/calculator/engine.py`
   - `calc-using-skp/src/calculator/parser.py`
   - `calc-using-skp/src/calculator/validator.py`
 
-- [ ] T040 [P] Run full test suite:
+- [x] T040 [P] Run full test suite:
   - `pytest tests/unit/` (unit tests for all modules)
   - `pytest tests/integration/` (end-to-end tests for all user stories)
   - Target: >90% code coverage
 
-- [ ] T041 [P] Code review and cleanup:
+- [x] T041 [P] Code review and cleanup:
   - Remove unused imports
   - Ensure consistent style (PEP 8)
   - Add type hints to all functions
 
-- [ ] T042 Create `calc-using-skp/.github/CONTRIBUTING.md` (if using GitHub)
+- [x] T042 Create `calc-using-skp/.github/CONTRIBUTING.md` (if using GitHub)
 
-- [ ] T043 Verify performance targets:
+- [x] T043 Verify performance targets:
   - <100ms response time for all operations
   - <50ms input validation
   - <10MB memory footprint
 
-- [ ] T044 [P] Build and test distribution:
+- [x] T044 [P] Build and test distribution:
   - `python setup.py sdist`
   - Test install: `pip install dist/calculator-*.tar.gz`
   - Verify `python -m calculator "5 + 3"` works
