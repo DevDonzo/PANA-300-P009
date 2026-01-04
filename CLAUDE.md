@@ -208,3 +208,10 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- Python 3.11+ + `rich` (for beautiful CLI rendering), `decimal` (for precise arithmetic), `pytest` (testing) (001-ios-calc)
+- N/A (stateless, in-memory calculation) (001-ios-calc)
+
+## Recent Changes
+- 001-ios-calc: Added Python 3.11+ + `rich` (for beautiful CLI rendering), `decimal` (for precise arithmetic), `pytest` (testing)
