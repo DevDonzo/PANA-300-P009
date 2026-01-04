@@ -1,0 +1,113 @@
+{
+  "name": "skill-maker",
+  "version": "1.0.0",
+  "description": "Comprehensive skill lifecycle manager for creating, enhancing, testing, and documenting Claude Code skills",
+  "author": "Claude Code Learning Project",
+  "category": "development",
+  "enabled": true,
+  "commands": [
+    {
+      "command": "create",
+      "description": "Create a new skill from scratch with guided setup",
+      "examples": ["/skill-maker create"]
+    },
+    {
+      "command": "enhance",
+      "description": "Improve an existing skill with refactoring and optimization",
+      "examples": ["/skill-maker enhance my-skill"]
+    },
+    {
+      "command": "test",
+      "description": "Validate and test a skill with comprehensive test cases",
+      "examples": ["/skill-maker test my-skill"]
+    },
+    {
+      "command": "document",
+      "description": "Generate professional documentation for a skill",
+      "examples": ["/skill-maker document my-skill"]
+    },
+    {
+      "command": "publish",
+      "description": "Prepare a skill for release with validation and testing",
+      "examples": ["/skill-maker publish my-skill"]
+    }
+  ],
+  "inputs": [
+    {
+      "name": "action",
+      "type": "enum",
+      "required": true,
+      "description": "The lifecycle action to perform",
+      "values": ["create", "enhance", "test", "document", "publish"],
+      "default": "create"
+    },
+    {
+      "name": "skillName",
+      "type": "string",
+      "required": false,
+      "description": "Name of the skill (required for enhance, test, document, publish)"
+    },
+    {
+      "name": "options",
+      "type": "object",
+      "required": false,
+      "description": "Additional options for the action"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "success",
+      "type": "boolean",
+      "description": "Whether the action completed successfully"
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "description": "Detailed message about what was done"
+    },
+    {
+      "name": "filePath",
+      "type": "string",
+      "description": "Path to created/modified files"
+    },
+    {
+      "name": "results",
+      "type": "object",
+      "description": "Action-specific results (test results, documentation paths, etc.)"
+    }
+  ],
+  "timeout": 60000,
+  "rateLimit": null,
+  "requiresApproval": false,
+  "bestPractices": [
+    "Skills should have a single, clear purpose",
+    "Always include input validation",
+    "Handle errors gracefully with meaningful messages",
+    "Document with examples and use cases",
+    "Write tests that cover edge cases",
+    "Keep parameters minimal and intuitive",
+    "Return data in consistent, predictable formats"
+  ],
+  "skillTemplates": {
+    "text": {
+      "description": "Text processing skill",
+      "inputs": ["inputText", "operation"],
+      "outputs": ["result", "stats"]
+    },
+    "data": {
+      "description": "Data transformation skill",
+      "inputs": ["data", "format", "options"],
+      "outputs": ["transformedData", "metadata"]
+    },
+    "file": {
+      "description": "File processing skill",
+      "inputs": ["filePath", "operation"],
+      "outputs": ["result", "fileInfo"]
+    },
+    "code": {
+      "description": "Code analysis/transformation skill",
+      "inputs": ["code", "language", "analysis"],
+      "outputs": ["result", "insights"]
+    }
+  }
+}
