@@ -20,10 +20,13 @@ This is a learning project for exploring Claude Code, skills, and subagents. It 
 ```
 .
 ├── CLAUDE.md                  # This file
-├── skill-maker.md             # skill-maker documentation
-├── skill-maker-config.json    # skill-maker configuration
-├── skill-maker.js             # skill-maker implementation
-└── skills/                    # Directory for created skills
+└── skills/                    # Directory for all skills
+    └── skill-maker/           # Example skill: comprehensive skill lifecycle manager
+        ├── README.md          # Skill documentation
+        ├── config.json        # Skill configuration
+        ├── index.js           # Skill implementation
+        └── tests/
+            └── index.test.js  # Skill tests
 ```
 
 ## Using skill-maker
@@ -38,11 +41,11 @@ The `/skill-maker` command provides a complete workflow:
 /skill-maker publish <name>      # Prepare for release
 ```
 
-See **skill-maker.md** for detailed usage and examples.
+See **skills/skill-maker/README.md** for detailed usage and examples.
 
 ## Key Concepts
 
-- **Skills**: Custom slash commands for Claude Code. See skill-maker.md for how to create them
+- **Skills**: Custom slash commands for Claude Code. See skills/skill-maker/README.md for how to create them
 - **Subagents**: Specialized agents for specific tasks (general-purpose, Explore, Plan, etc.)
 - **MCP Servers**: Integration points for extended functionality
 
