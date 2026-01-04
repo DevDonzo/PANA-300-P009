@@ -5,8 +5,8 @@
 
 cd "$CLAUDE_PROJECT_DIR" || exit 1
 
-# Check if there are any changes to commit
-if ! git diff --quiet || ! git diff --cached --quiet; then
+# Check if there are any changes to commit (tracked, staged, or untracked files)
+if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
   # Stage all changes
   git add .
 
